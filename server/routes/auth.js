@@ -2,6 +2,7 @@ const router = require('express').Router();
 const bcrypt = require('bcrypt');
 const User = require('../models/User');
 const jwt = require('jsonwebtoken');
+const authorize = require('../middlewares/authorize');
 
 router.post('/register', async (req, res) => {
   const { name, email, password } = req.body;
@@ -77,12 +78,16 @@ router.post('/login', async (req, res) => {
     const token = jwt.sign(payload, process.env.SECRETKEY, {
       expiresIn: '1h',
     });
-
-    return res.status(200).json({ token });
+    const user = { ...isUserAuthenticated._doc, password: undefined };
+    return res.status(200).json({ token, user });
   } catch (err) {
     console.log(err);
     return res.status(500).json({ error: err.message });
   }
+});
+
+router.get('/me', authorize, async (req, res) => {
+  return res.status(200).json({ ...req.user._doc });
 });
 
 module.exports = router;

@@ -7,6 +7,7 @@ const authorize = require('./middlewares/authorize');
 
 //middlewares
 app.use(express.json());
+app.use(require('cors')());
 //routes
 app.get('/protected', authorize, (req, res) => {
   return res.status(200).json({ ...req.user._doc });
