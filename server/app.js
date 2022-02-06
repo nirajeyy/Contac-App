@@ -14,6 +14,7 @@ app.get('/protected', authorize, (req, res) => {
 });
 
 app.use('/api', require('./routes/auth'));
+app.use('/api', require('./routes/contact'));
 
 //server config
 const PORT = process.env.PORT || 8000;
