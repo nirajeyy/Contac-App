@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 import { useContext, useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -10,6 +10,11 @@ const Login = () => {
     email: '',
     password: '',
   });
+  const navigate = useNavigate();
+  //token cha bhane navigate to home
+  if (localStorage.getItem('token')) {
+    navigate('/', { required: true });
+  }
 
   const handleOnChange = (e) => {
     const { name, value } = e.target;

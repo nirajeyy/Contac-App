@@ -12,7 +12,9 @@ router.post('/contacts', authorize, async (req, res) => {
     return res.status(400).json({ error: error.details[0].message });
   }
 
-  const { name, address, email, phone } = req.body;
+  const { name, address, email, phone, isfavourite } = req.body;
+
+  console.log('thisss', req);
 
   try {
     //check if the contact already exists
@@ -28,6 +30,7 @@ router.post('/contacts', authorize, async (req, res) => {
       address,
       email,
       phone,
+      isfavourite,
       postedBy: req.user._id,
     });
     const result = await newContact.save();
@@ -97,6 +100,7 @@ router.delete('/contacts/:id', authorize, async (req, res) => {
     if (req.user._id.toString() !== contact.postedBy._id.toString())
       return res.status(401).json({ error: 'Not authorized to delete' });
     //delete the id
+
     const result = await Contact.deleteOne({ _id: id });
     return res.status(200).json({ ...contact._doc });
   } catch (err) {

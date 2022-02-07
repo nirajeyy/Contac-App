@@ -49,6 +49,20 @@ const Navbar = ({ title = 'UContact' }) => {
               {user ? (
                 <>
                   <li className="nav-item">
+                    <Link to="/mycontacts">
+                      <button className="btn btn-outline-dark ">
+                        All Peoples
+                      </button>
+                    </Link>
+                  </li>
+                  <li className="nav-item">
+                    <Link to="/create">
+                      <button className="btn btn-outline-dark ">
+                        Create Contact
+                      </button>
+                    </Link>
+                  </li>
+                  <li className="nav-item">
                     <button
                       className="btn btn-outline-dark "
                       onClick={handleLogOut}

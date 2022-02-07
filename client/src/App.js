@@ -5,6 +5,9 @@ import Login from './pages/Login';
 import Home from './pages/Home';
 import './index.css';
 import { AuthorizeContextProvider } from './config/AuthorizeContext';
+import Create from './pages/Create';
+import ShowContact from './pages/ShowContact';
+import EditContact from './pages/EditContact';
 
 const App = () => {
   return (
@@ -14,6 +17,9 @@ const App = () => {
           <Route path="/" element={<Home />}></Route>
           <Route path="/login" element={<Login />}></Route>
           <Route path="/register" element={<Register />}></Route>
+          <Route path="/create" element={<Create />}></Route>
+          <Route path="/mycontacts" element={<ShowContact />}></Route>
+          <Route path="/editcontact" element={<EditContact />}></Route>
         </Switch>
       </Layout>
     </AuthorizeContextProvider>

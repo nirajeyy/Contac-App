@@ -43,6 +43,9 @@ export const AuthorizeContextProvider = ({ children }) => {
   // login persistnce
 
   const userPersistant = async () => {
+    if (!localStorage.getItem('token')) {
+      navigate('/login', { replace: true });
+    }
     try {
       const res = await fetch('http://localhost:8000/api/me', {
         method: 'GET',
@@ -53,9 +56,9 @@ export const AuthorizeContextProvider = ({ children }) => {
       const result = await res.json();
       if (!result.error) {
         setUser(result);
-        navigate('/', { replace: true });
+        navigate(window.location.pathname, { replace: true });
       } else {
-        console.log(result.error);
+        navigate('/login', { replace: true });
       }
     } catch (err) {
       console.log(err);

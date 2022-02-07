@@ -18,6 +18,9 @@ const ContactSchema = new mongoose.Schema({
     type: Number,
     required: [true, 'Phone required'],
   },
+  isfavourite: {
+    type: Boolean,
+  },
   postedBy: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
@@ -31,7 +34,8 @@ const validateContact = (data) => {
     name: Joi.string().min(4).max(50).required(),
     address: Joi.string().min(4).max(100).required(),
     email: Joi.string().email().required(),
-    phone: Joi.number().min(100000).max(1000000000).required(),
+    phone: Joi.number().min(100000).max(10000000000).required(),
+    isfavourite: Joi.boolean(),
   });
 
   return schema.validate(data);
