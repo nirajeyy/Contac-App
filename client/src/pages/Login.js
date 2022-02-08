@@ -5,7 +5,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import AuthorizeContext from '../config/AuthorizeContext';
 
 const Login = () => {
-  const { loginUser } = useContext(AuthorizeContext);
+  const { loginUser, user } = useContext(AuthorizeContext);
   const [credentials, setCredentials] = useState({
     email: '',
     password: '',
@@ -13,7 +13,7 @@ const Login = () => {
   const navigate = useNavigate();
   //token cha bhane navigate to home
   useEffect(() => {
-    localStorage.getItem('token') && navigate('/', { replace: true });
+    user && navigate('/', { replace: true });
   });
 
   const handleOnChange = (e) => {

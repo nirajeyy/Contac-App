@@ -9,7 +9,10 @@ const Create = () => {
     address: '',
     email: '',
     phone: '',
+    // image: '',
   });
+
+  const [previewSource, setPreviewSource] = useState({});
 
   const { user } = useContext(AuthorizeContext);
   const navigate = useNavigate();
@@ -37,9 +40,19 @@ const Create = () => {
   };
   const handleOnChange = (e) => {
     const { name, value } = e.target;
-    // setCredentials({ ...credentials, [name]: value });
+    // const file = e.target.files[0]
+    // previewFile(file);
     setUserCredentials({ ...userCredentials, [name]: value });
   };
+
+  // const previewFile = (file) => {
+  //   const reader = new FileReader();
+  //   reader.readAsDataURL(file);
+  //   reader.onload = () => {
+  //     setPreviewSource(reader.result);
+  //   };
+  // };
+  // console.log(userCredentials);
 
   return (
     <>
@@ -106,12 +119,29 @@ const Create = () => {
             required
           />
         </div>
+
+        {/* <input
+          type="file"
+          name="image"
+          className="form-control mt-5"
+          value={userCredentials.image}
+          onChange={handleOnChange}
+        /> */}
+
         <input
           type="submit"
           value="Add"
           className="btn btn-outline-dark mt-5"
         />
       </form>
+      {/* {previewSource && (
+        <img
+          className="mt-4"
+          src={previewSource}
+          alt="chosen"
+          style={{ height: '300px' }}
+        />
+      )} */}
     </>
   );
 };

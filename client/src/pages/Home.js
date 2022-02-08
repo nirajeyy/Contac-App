@@ -1,10 +1,12 @@
 import { useContext, useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 import AuthorizeContext from '../config/AuthorizeContext';
+import dynamicSort from '../utils/dynamicSort';
 
 const Home = () => {
   const { user } = useContext(AuthorizeContext);
   const [favContacts, setFavContacts] = useState([]);
+  const navigate = useNavigate();
 
   const fetchFavouriteContacts = async () => {
     try {
@@ -19,13 +21,15 @@ const Home = () => {
       const filter = result.contacts.filter((resu) => {
         return resu.isfavourite === true;
       });
-      setFavContacts(filter);
+      const alphaBetically = filter.sort(dynamicSort('name'));
+      setFavContacts(alphaBetically);
     } catch (err) {
       console.log(err);
     }
   };
 
   useEffect(() => {
+    !user && navigate('/login', { replace: true });
     fetchFavouriteContacts();
   }, []);
 

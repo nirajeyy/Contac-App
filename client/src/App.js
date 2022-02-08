@@ -14,8 +14,8 @@ const App = () => {
     <AuthorizeContextProvider>
       <Layout>
         <Switch>
-          <Route path="/" element={<Home />}></Route>
           <Route path="/login" element={<Login />}></Route>
+          <Route path="/" element={<Home />}></Route>
           <Route path="/register" element={<Register />}></Route>
           <Route path="/create" element={<Create />}></Route>
           <Route path="/mycontacts" element={<ShowContact />}></Route>
