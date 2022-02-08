@@ -4,7 +4,7 @@ import AuthorizeContext from '../config/AuthorizeContext';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const Navbar = ({ title = 'UContact' }) => {
+const Navbar = ({ title = 'YourContacts 📜' }) => {
   const { user, setUser } = useContext(AuthorizeContext);
   const navigate = useNavigate();
   const handleLogOut = () => {

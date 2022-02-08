@@ -48,7 +48,7 @@ router.get('/contacts', authorize, async (req, res) => {
       'postedBy',
       '-password'
     );
-    return res.status(200).json({ contacts: myContacts });
+    return res.status(200).json({ contacts: myContacts.reverse() });
   } catch (err) {
     console.log(error);
   }
@@ -71,6 +71,10 @@ router.put('/contacts/:id', authorize, async (req, res) => {
     if (req.user._id.toString() !== contact.postedBy._id.toString())
       return res.status(401).json({ error: 'Not authorized to Edit' });
     //Edit the Contact
+    // const { error } = validateContact(req.body);
+    // if (error) {
+    //   return res.status(400).json({ error: error.details[0].message });
+    // }
     const updatedData = { ...req.body, id: undefined };
     const result = await Contact.findByIdAndUpdate(id, updatedData, {
       new: true,
@@ -102,6 +106,24 @@ router.delete('/contacts/:id', authorize, async (req, res) => {
     //delete the id
 
     const result = await Contact.deleteOne({ _id: id });
+    return res.status(200).json({ ...contact._doc });
+  } catch (err) {
+    console.log(err);
+  }
+});
+// to get a single id
+router.get('/contacts/:id', authorize, async (req, res) => {
+  const { id } = req.params;
+
+  //check if the id is valid or not- not that important
+  if (!mongoose.isValidObjectId(id))
+    return res.status(400).json({ error: 'Not Valid ID' });
+  //check id exisits or not
+  if (!id) return res.status(400).json({ error: 'Id not found' });
+
+  try {
+    const contact = await Contact.findOne({ _id: id });
+
     return res.status(200).json({ ...contact._doc });
   } catch (err) {
     console.log(err);

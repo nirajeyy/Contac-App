@@ -102,7 +102,7 @@ const ShowContact = () => {
         <>
           <h1>You have no contacts </h1>
           <Link to="/create">
-            <button type="button" class="btn btn-outline-dark">
+            <button type="button" className="btn btn-outline-dark">
               Create New Contact
             </button>
           </Link>
@@ -208,7 +208,7 @@ const ShowContact = () => {
             </Modal.Body>
 
             <Modal.Footer style={{ display: 'flex', justifyContent: 'center' }}>
-              <Link to={`/editcontact?id=${modalData._id}`}>
+              <Link to={`/editcontact/${modalData._id}`}>
                 <button
                   className="btn btn-outline-info"
                   onClick={() => setDetailedContact(false)}

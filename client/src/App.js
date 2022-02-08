@@ -19,7 +19,7 @@ const App = () => {
           <Route path="/register" element={<Register />}></Route>
           <Route path="/create" element={<Create />}></Route>
           <Route path="/mycontacts" element={<ShowContact />}></Route>
-          <Route path="/editcontact" element={<EditContact />}></Route>
+          <Route path="/editcontact/:id" element={<EditContact />}></Route>
         </Switch>
       </Layout>
     </AuthorizeContextProvider>
