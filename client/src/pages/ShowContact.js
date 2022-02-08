@@ -1,13 +1,10 @@
-import { useContext, useEffect, useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
-import AuthorizeContext from '../config/AuthorizeContext';
+import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Modal } from 'react-bootstrap';
 import { ToastContainer, toast } from 'react-toastify';
 
 const ShowContact = () => {
   const [contacts, setContacts] = useState([]);
-  const { user } = useContext(AuthorizeContext);
-  const navigate = useNavigate();
   const [detailedContact, setDetailedContact] = useState(false);
   const [modalData, setModalData] = useState({});
   const [favChanged, setFavChanged] = useState(false);
