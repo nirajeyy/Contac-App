@@ -20,7 +20,6 @@ const ShowContact = () => {
       });
       const result = await res.json();
       if (!result.error) {
-        console.log(result.contacts);
         setContacts(result.contacts);
       } else {
         console.log(result.error);

@@ -24,10 +24,6 @@ const Login = () => {
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
-    if (!credentials.email || !credentials.password) {
-      // toast.error('Please Enter all the fields'); //from server
-    }
-
     loginUser(credentials);
   };
 
