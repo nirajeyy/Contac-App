@@ -141,7 +141,7 @@ const ShowContact = () => {
             onHide={() => setDetailedContact(false)}
           >
             <Modal.Header closeButton>
-              <Modal.Title>
+              <Modal.Title style={{ textAlign: 'center' }}>
                 <strong>{modalData.name}</strong>
               </Modal.Title>
             </Modal.Header>
@@ -192,13 +192,13 @@ const ShowContact = () => {
                 }}
               >
                 <h5>
-                  <strong>Address:</strong> {modalData.address}
+                  <strong>Address: </strong> {modalData.address}
                 </h5>
                 <h5>
-                  <strong>Email:</strong> {modalData.email}
+                  <strong>Email: </strong> {modalData.email}
                 </h5>
                 <h5>
-                  <strong>Phone:</strong> {modalData.phone}
+                  <strong>Phone: </strong> {modalData.phone}
                 </h5>
               </div>
             </Modal.Body>

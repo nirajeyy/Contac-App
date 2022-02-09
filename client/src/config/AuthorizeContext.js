@@ -35,7 +35,7 @@ export const AuthorizeContextProvider = ({ children }) => {
         setError(null);
         return;
       }
-      console.log('established', userToken);
+      console.log('established');
     } catch (err) {
       console.log(err);
     }
