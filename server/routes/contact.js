@@ -17,6 +17,7 @@ router.post('/contacts', authorize, async (req, res) => {
   try {
     //check if the contact already exists
     const doesContactAlreadyExist = await Contact.findOne({ name });
+
     if (doesContactAlreadyExist) {
       return res
         .status(400)
