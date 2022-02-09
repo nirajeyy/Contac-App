@@ -39,7 +39,6 @@ const EditContact = () => {
   };
   const handleOnChange = (e) => {
     const { name, value } = e.target;
-    // setCredentials({ ...credentials, [name]: value });
     setUserCredentials({ ...userCredentials, [name]: value });
   };
 

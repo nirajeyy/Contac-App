@@ -56,7 +56,6 @@ const Login = () => {
             onChange={handleOnChange}
             aria-describedby="emailHelp"
             placeholder="email@example.com"
-            // required
           />
         </div>
         <div className="form-group">
@@ -71,7 +70,6 @@ const Login = () => {
             value={credentials.password}
             onChange={handleOnChange}
             placeholder="Enter Password"
-            // required
           />
         </div>
         <button type="submit" className="btn btn-primary mt-3">
